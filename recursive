@@ -1,0 +1,21 @@
+def egg_drop(n, min_goes=1):
+"""
+param n: The number of floors in the egg drop tower
+param min_goes: the min number of goes to find the floor at which an egg breaks.
+returns min_goes: int
+Function works recursively to find the min_goes to find the point at which eggs start breaking for a given tower height
+1st drop is at floor level (min_goes): assume it breaks then the second egg is dropped from every level below it ie. min_goes -1 : total=min_goes
+If the egg doesn't break on the first_drop then we still want the same number of min_goes for futher attemps. Therefore the next level to drop egg 1 from is 
+min_goes + (min_goes - 1 attempt) etc etc
+"""
+  if n==1:
+    return 1
+  attempt=1 # attempts of dropping the first egg without it breaking
+  drop_level = min_goes
+  while x < n:
+    if (min_goes-attempt > 0):
+      drop_level = drop_level + (min_goes-attempt)
+      attempt += 1
+    else:
+      return egg_drop(n, min_goes +1)
+  return min_goes
